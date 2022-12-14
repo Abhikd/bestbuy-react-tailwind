@@ -11,6 +11,7 @@ const Products = () => {
 
 
     const categoryFilter = (category) => {
+
         setProductFilter(productList);
 
         setProductFilter(
@@ -76,10 +77,10 @@ const Products = () => {
     }
 
     const handleCart = (product) => {
-        if(cartArray.includes(product)) {
+        if (cartArray.includes(product)) {
             alert("Item already added to cart!");
         }
-       else if (product.stock >= 1 && product.stock <= 50) {
+        else if (product.stock >= 1 && product.stock <= 50) {
             alert("Only a few items left! Item added to your cart!")
             setCartArray([...cartArray, product]);
             setTotal(total + product.price);
@@ -104,7 +105,7 @@ const Products = () => {
         }
     }
 
-     const deleteHandler = (id, price) => {
+    const deleteHandler = (id, price) => {
         setTotal(total - price);
         setCartArray(
             cartArray.filter((product) => {
@@ -181,7 +182,7 @@ const Products = () => {
 
                 <div>
                     <p className='font-bold text-gray-700'>Rating</p>
-                    <div className='flex'>
+                    <div className='flex flex-wrap'>
                         <button onClick={() => ratingFilter(3)} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white focus:ring focus:ring-orange-600'>Above 3</button>
                         <button onClick={() => ratingFilter(3.5)} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white focus:ring focus:ring-orange-600'>Above 3.5</button>
                         <button onClick={() => ratingFilter(4)} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white focus:ring focus:ring-orange-600'>Above 4</button>
@@ -193,7 +194,7 @@ const Products = () => {
                 </div>
                 <div>
                     <p className='font-bold text-gray-700'>Discount</p>
-                    <div className='flex'>
+                    <div className='flex flex-wrap'>
                         <button onClick={() => discountFilter(5)} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white focus:ring focus:ring-orange-600'>Above 5%</button>
                         <button onClick={() => discountFilter(10)} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white focus:ring focus:ring-orange-600'>Above 10%</button>
                         <button onClick={() => discountFilter(15)} className='m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white focus:ring focus:ring-orange-600'>Above 15%</button>
@@ -271,11 +272,11 @@ const Products = () => {
                 <div className='flex justify-end'>
                     <p className='font-bold text-gray-700 text-2xl'>Total:${total}</p>
                 </div>
-              {!show ?  <div className='flex justify-end'>
+                {!show ? <div className='flex justify-end'>
                     <Link to="home" spy={true} smooth={true} offset={-100} duration={2000}>
                         <button id='hero' onClick={() => handleBuy()} className='m-2 bg-orange-600 text-white border-white'>Buy</button>
                     </Link>
-                </div> : "" }
+                </div> : ""}
             </div>
 
 
